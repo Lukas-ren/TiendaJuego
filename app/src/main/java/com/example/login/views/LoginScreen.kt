@@ -28,10 +28,11 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel) {
 
         Button(onClick = {
             if (viewModel.login(email, password)) {
-                if (email == "admin@login.com" && password == "admin")
-                    navController.navigate("backoffice")
-            } else {
-                navController.navigate("home/$email")
+                if (email == "admin@login.com" && password == "admin") {
+                    navController.navigate(route = "backoffice")
+                } else {
+                    navController.navigate(route = "home/$email")
+                }
             }
         }) {
             Text("Entrar")

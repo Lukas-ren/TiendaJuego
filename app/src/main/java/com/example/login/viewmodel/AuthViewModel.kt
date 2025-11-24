@@ -6,10 +6,8 @@ import com.example.login.model.FakeDatabase
 import com.example.login.model.Usuario
 
 class AuthViewModel : ViewModel() {
-
     var mensaje = mutableStateOf("")
     var usuarioActual = mutableStateOf<String?>(null)
-
     fun registrar(nombre: String, email: String, password: String) {
         if (nombre.isBlank() || email.isBlank() || password.isBlank()) {
             mensaje.value = "Todos los campos son obligatorios"
@@ -23,7 +21,7 @@ class AuthViewModel : ViewModel() {
             mensaje.value = "La contraseña debe tener mínimo 6 carácteres"
             return
         }
-        val nuevo = Usuario(email, nombre,password)
+        val nuevo = Usuario(nombre,email,password)
         if (FakeDatabase.registrar(nuevo)) {
             mensaje.value = "Registro exitoso ✅"
         } else {
@@ -32,6 +30,10 @@ class AuthViewModel : ViewModel() {
     }
 
     fun login(email: String, password: String): Boolean {
+        if (email.isBlank() || password.isBlank()) {
+            mensaje.value = "Debes completar todos los campos."
+            return false
+        }
         val usuario = FakeDatabase.login(email, password)
         return if (usuario != null) {
             usuarioActual.value = usuario.email
@@ -41,5 +43,9 @@ class AuthViewModel : ViewModel() {
             mensaje.value = "Credenciales inválidas ❌"
             false
         }
+    }
+    fun resetLogin() {
+        usuarioActual.value = null
+        mensaje.value = ""
     }
 }
