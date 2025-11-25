@@ -8,4 +8,5 @@ data class Videojuego (
     val precio: Double,
     val imagen: String,
     val stock: Int
+    val codigos: MutableList<String>
     )
