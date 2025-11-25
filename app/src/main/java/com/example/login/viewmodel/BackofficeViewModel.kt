@@ -27,4 +27,18 @@ class BackofficeViewModel (
             _loading.value = false
         }
     }
+    fun onEditarVideojuego(videojuego: Videojuego) {
+        println("Backoffice: Solicitud de edición de el producto ${videojuego.nombre}")
+    }
+    fun onEliminarVideojuego(videojuego: Videojuego, context: android.content.Context) {
+        viewModelScope.launch {
+            repo.eliminarVideojuego(videojuego)
+
+            cargarVideojuegos(context)
+            println("Backoffice: Producto ${videojuego.nombre} eliminado, recargando lista de productos")
+        }
+    }
+    fun onVerVideojuego(videojuego: Videojuego) {
+        println("Backoffice: Solicitud para ver detalles de el producto ${videojuego.nombre}")
+    }
 }

@@ -21,6 +21,6 @@ class VideojuegoRepository {
         println("Repositorio: Editando el producto ${videojuego.nombre}")
     }
     fun eliminarVideojuego(videojuego: Videojuego) {
-        println("Repositorio: Eliminando el producto ${videojuego.nombre}")
+        println("Repositorio: Eliminando el producto ${videojuego.nombre} con ID ${videojuego.id}")
     }
 }

@@ -18,20 +18,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import com.example.login.viewmodel.BackofficeViewModel
 import com.example.login.viewmodel.CatalogoViewModel
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BackOfficeScreen(
     navController: NavController,
-    catalogoViewModel: CatalogoViewModel = viewModel()
+    backofficeViewModel: BackofficeViewModel = viewModel()
 ) {
     val context = LocalContext.current
-    val videojuegos = catalogoViewModel.videojuegos.collectAsState()
-
-
+    val videojuegos = backofficeViewModel.videojuegos.collectAsState()
     LaunchedEffect(Unit) {
-        catalogoViewModel.cargarVideojuegos(context)
+        backofficeViewModel.cargarVideojuegos(context)
     }
     Scaffold(
         topBar = {
@@ -80,7 +78,6 @@ fun BackOfficeScreen(
                                 Text(text = "Género: ${juego.genero}", style = MaterialTheme.typography.bodySmall)
 
                                 Spacer(modifier = Modifier.height(8.dp))
-
                                 Row(
                                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                                 ) {
