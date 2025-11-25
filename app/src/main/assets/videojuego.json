@@ -4,7 +4,7 @@
     "nombre": "Hollow Knight",
     "genero": "Metroidvania, Acción y aventura, Indie",
     "plataforma": "PS4, Xbox One, PC",
-    "precio": 100.00,
+    "precio": 10000,
     "imagen": "https://data.xxlgamer.com/products/4252/qATiGpJ2bh09GJ-medium.jpg",
     "stock":  62
   },
@@ -13,7 +13,7 @@
     "nombre": "The Binding of Isaac: Repentance",
     "genero": "RogueLike, Acción y aventura, Indie",
     "plataforma": "PS4, Xbox One, PC",
-    "precio": 150.00,
+    "precio": 15000,
     "imagen": "https://image.api.playstation.com/vulcan/ap/rnd/202109/2718/T2OuDWQqu5ef8eENAbWkNLPf.jpg",
     "stock":  12
   },
@@ -22,7 +22,7 @@
     "nombre": "Clair Obscur: Expedition 33",
     "genero": "RPG, Acción y aventura",
     "plataforma": "PS5, Xbox Series X, PC",
-    "precio": 300.00,
+    "precio": 30000,
     "imagen": "https://i.3djuegos.com/juegos/19783/clair_obscur_expedition_33/fotos/ficha/clair_obscur_expedition_33-5897212.webp",
     "stock":  33
   },
@@ -31,7 +31,7 @@
     "nombre": "Hades",
     "genero": "RogueLike, Indie",
     "plataforma": "PS4, Xbox One, PC",
-    "precio": 120.00,
+    "precio": 12000,
     "imagen": "https://cdn1.epicgames.com/min/offer/1200x1600-1200x1600-e92fa6b99bb20c9edee19c361b8853b9.jpg",
     "stock":  42
   },
@@ -40,7 +40,7 @@
     "nombre": "Cyberpunk 2077",
     "genero": "RPG, Shooter en primera persona, ",
     "plataforma": "PS4, Xbox One, PC",
-    "precio": 500.00,
+    "precio": 50000,
     "imagen": "https://www.doblajevideojuegos.es/portadas/portada_cyberpunk-2077.jpg",
     "stock":  37
   }

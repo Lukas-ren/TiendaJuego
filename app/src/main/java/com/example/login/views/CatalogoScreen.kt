@@ -26,8 +26,6 @@ fun CatalogoScreen(navController: NavController, viewModel: CatalogoViewModel) {
     val context = LocalContext.current
     val videojuegos by viewModel.videojuegos.collectAsState()
     val loading by viewModel.loading.collectAsState()
-
-    // Cargar productos (solo una vez)
     LaunchedEffect(Unit) {
         viewModel.cargarVideojuegos(context)
     }

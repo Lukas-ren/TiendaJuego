@@ -17,4 +17,10 @@ class VideojuegoRepository {
             emptyList()
         }
     }
+    fun editarVideojuego(videojuego: Videojuego) {
+        println("Repositorio: Editando el producto ${videojuego.nombre}")
+    }
+    fun eliminarVideojuego(videojuego: Videojuego) {
+        println("Repositorio: Eliminando el producto ${videojuego.nombre}")
+    }
 }
