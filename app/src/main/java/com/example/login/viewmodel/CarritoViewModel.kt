@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
 class CarritoViewModel : ViewModel() {
-
     private val _carrito = MutableStateFlow<List<Carrito>>(emptyList())
     val carrito: StateFlow<List<Carrito>> = _carrito
 
@@ -27,13 +26,11 @@ class CarritoViewModel : ViewModel() {
             }
         }
     }
-
     fun quitarProducto(id: Int) {
         _carrito.update { current ->
             current.filterNot { it.id == id }
         }
     }
-
     fun agregarSiNoExiste(videojuego: Carrito) {
         _carrito.update { current ->
             val existe = current.any { it.id == videojuego.id }
@@ -44,7 +41,6 @@ class CarritoViewModel : ViewModel() {
             }
         }
     }
-
     fun disminuirCantidad(id: Int) {
         _carrito.update { current ->
             current.mapNotNull {
@@ -54,7 +50,6 @@ class CarritoViewModel : ViewModel() {
             }
         }
     }
-
     fun vaciarCarrito() {
         _carrito.value = emptyList()
     }

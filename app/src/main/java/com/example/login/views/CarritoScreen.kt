@@ -128,7 +128,7 @@ fun CarritoScreen(
                                 Text("${videojuego.cantidad}", modifier = Modifier.padding(horizontal = 4.dp))
                                 Button(
                                     onClick = {
-                                        carritoViewModel.agregarSiNoExiste(
+                                        carritoViewModel.agregarProducto(
                                             com.example.login.model.Carrito(
                                                 id = videojuego.id,
                                                 nombre = videojuego.nombre,
