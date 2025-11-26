@@ -64,6 +64,7 @@ fun CarritoScreen(
                                 totalCompra = total,
                                 numeroArticulos = carritoActual.size,
                                 metodoPago = "Tarjeta"
+                                codigosProductos = carritoActual.map { it.codigo ?: it.id.toString() }
                             )
                             compraExitosaViewModel.setDetallesPedido(detalles)
                             carritoViewModel.vaciarCarrito()
