@@ -7,7 +7,7 @@
     "precio": 10000,
     "imagen": "https://data.xxlgamer.com/products/4252/qATiGpJ2bh09GJ-medium.jpg",
     "stock":  62,
-    "codigo":1483297402438
+    "codigo":"1483297402438"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "precio": 15000,
     "imagen": "https://image.api.playstation.com/vulcan/ap/rnd/202109/2718/T2OuDWQqu5ef8eENAbWkNLPf.jpg",
     "stock":  12,
-    "codigo":5950512305038
+    "codigo":"5950512305038"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "precio": 30000,
     "imagen": "https://i.3djuegos.com/juegos/19783/clair_obscur_expedition_33/fotos/ficha/clair_obscur_expedition_33-5897212.webp",
     "stock":  33,
-    "codigo":9405021430543
+    "codigo":"9405021430543"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "precio": 12000,
     "imagen": "https://cdn1.epicgames.com/min/offer/1200x1600-1200x1600-e92fa6b99bb20c9edee19c361b8853b9.jpg",
     "stock":  42,
-    "codigo":4302567392017
+    "codigo":"4302567392017"
   },
   {
     "id": 5,
@@ -47,6 +47,6 @@
     "precio": 50000,
     "imagen": "https://www.doblajevideojuegos.es/portadas/portada_cyberpunk-2077.jpg",
     "stock":  37,
-    "codigo":9203920125837
+    "codigo":"9203920125837"
   }
 ]
