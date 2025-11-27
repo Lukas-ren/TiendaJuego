@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             val compraRechazadaViewModel: CompraRechazadaViewModel = viewModel()
             NavHost(
                 navController = navController,
-                startDestination = "backoffice"
+                startDestination = "catalogo"
             ) {
                 composable("register") {
                     RegisterScreen(

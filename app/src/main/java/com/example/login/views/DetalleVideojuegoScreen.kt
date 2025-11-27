@@ -46,7 +46,6 @@ fun DetalleVideojuegoScreen(videojuegoId: Int,
                                 nombre = v.nombre,
                                 precio = v.precio,
                                 imagen = v.imagen,
-                                codigo = v.codigo,
                                 cantidad = 1
                             )
                         )

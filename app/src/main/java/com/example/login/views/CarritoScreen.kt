@@ -45,7 +45,7 @@ fun CarritoScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Total: $${String.format("%.2f", carritoViewModel.total)}")
+                    Text("Total: $${carritoViewModel.total}")
                     Button(onClick = {
                         val carritoActual = carritoViewModel.carrito.value
 
@@ -58,7 +58,6 @@ fun CarritoScreen(
                                 totalCompra = total,
                                 numeroArticulos = carritoActual.size,
                                 metodoPago = "Tarjeta"
-                                codigosProductos = carritoActual.map { it.codigo ?: it.id.toString() }
                             )
                             compraExitosaViewModel.setDetallesPedido(detalles)
                             carritoViewModel.vaciarCarrito()
@@ -113,7 +112,7 @@ fun CarritoScreen(
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(videojuego.nombre, style = MaterialTheme.typography.titleMedium)
                                 Text("Precio: $${videojuego.precio}")
-                                Text("Subtotal: $${String.format("%.2f", videojuego.subtotal)}")
+                                Text("Subtotal: $${videojuego.subtotal}")
                             }
 
                             Row(verticalAlignment = Alignment.CenterVertically) {

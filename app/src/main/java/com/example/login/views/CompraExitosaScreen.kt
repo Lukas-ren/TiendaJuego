@@ -35,12 +35,10 @@ fun CompraExitosaScreen(
     viewModel: CompraExitosaViewModel = viewModel()
 ) {
     val detalles by viewModel.detallesPedido.observeAsState()
-
-    // Observa navegación
+    val codigoCanje by viewModel.codigoCanje.collectAsState()
     val navegarInicio by viewModel.navegarInicio.observeAsState(false)
     val navegarTienda by viewModel.navegarTienda.observeAsState(false)
 
-    // Si cambia, navega
     LaunchedEffect(navegarInicio, navegarTienda) {
         when {
             navegarInicio -> {
@@ -78,6 +76,17 @@ fun CompraExitosaScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Text("¡Compra realizada con éxito!", fontSize = 22.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Tu código de canje:",
+                style = MaterialTheme.typography.titleMedium
+            )
+            Card{
+                Text(
+                    text = codigoCanje,
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
 
             detalles?.let {
                 Text("Número de pedido: ${it.idPedido}")
