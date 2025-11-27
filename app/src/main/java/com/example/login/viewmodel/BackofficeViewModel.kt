@@ -19,7 +19,7 @@ class BackofficeViewModel (
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading
 
-    fun cargarVideojuegos(context: Context) {
+    fun cargarVideojuego(context: Context) {
         viewModelScope.launch {
             _loading.value = true
             val list = repo.obtenerVideojuego(context)
@@ -33,8 +33,7 @@ class BackofficeViewModel (
     fun onEliminarVideojuego(videojuego: Videojuego, context: android.content.Context) {
         viewModelScope.launch {
             repo.eliminarVideojuego(videojuego)
-
-            cargarVideojuegos(context)
+            cargarVideojuego(context)
             println("Backoffice: Producto ${videojuego.nombre} eliminado, recargando lista de productos")
         }
     }

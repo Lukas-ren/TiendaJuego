@@ -6,7 +6,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.autofill.ContentDataType.Companion.Date
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
@@ -16,10 +15,6 @@ import coil.compose.AsyncImage
 import com.example.login.model.DetallePedido
 import com.example.login.viewmodel.CarritoViewModel
 import com.example.login.viewmodel.CompraExitosaViewModel
-import com.example.login.viewmodel.CompraRechazadaViewModel
-import com.google.type.Date
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,7 +52,6 @@ fun CarritoScreen(
                         if (carritoActual.isNullOrEmpty()) {
                             navController.navigate("compraRechazada")
                         } else {
-                            // ✅ Carrito con productos → Crear detalles y navegar a compra exitosa
                             val total = carritoViewModel.total
                             val detalles = DetallePedido(
                                 idPedido = "PED-${System.currentTimeMillis()}",

@@ -69,6 +69,7 @@ dependencies {
     implementation(libs.protolite.well.known.types)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.compose.foundation.android)
+    implementation(libs.androidx.camera.camera2.pipe)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

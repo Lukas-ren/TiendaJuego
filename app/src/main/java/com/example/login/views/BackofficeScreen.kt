@@ -4,6 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +23,9 @@ import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.example.login.viewmodel.BackofficeViewModel
 import com.example.login.viewmodel.CatalogoViewModel
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.graphics.Color
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BackOfficeScreen(
@@ -29,15 +35,29 @@ fun BackOfficeScreen(
     val context = LocalContext.current
     val videojuegos = backofficeViewModel.videojuegos.collectAsState()
     LaunchedEffect(Unit) {
-        backofficeViewModel.cargarVideojuegos(context)
+        backofficeViewModel.cargarVideojuego(context)
     }
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Panel de Administración") },
+                title = { Text(text = "Panel de Administración") },
                 actions = {
-                    TextButton(onClick = { navController.navigate("home") }) {
-                        Text("Volver", color = MaterialTheme.colorScheme.onPrimary)
+                    IconButton(onClick = {
+                        navController.navigate(route = "agregarProducto")
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = "Añadir Producto",
+                            tint = Color.Black
+                        )
+                    }
+                    IconButton(onClick = { navController.navigate(route = "register") }) {
+                        Icon(
+                            imageVector = Icons.Filled.Home,
+                            contentDescription = "Volver al Catálogo",
+
+                            tint = Color.Black
+                        )
                     }
                 }
             )

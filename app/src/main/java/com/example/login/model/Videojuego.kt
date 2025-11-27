@@ -5,8 +5,7 @@ data class Videojuego (
     val nombre: String,
     val genero: String?,
     val plataforma: String,
-    val precio: Double,
+    val precio: Int,
     val imagen: String,
-    val stock: Int
-    val codigo: Int
+    val stock: Int,
     )

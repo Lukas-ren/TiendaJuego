@@ -24,6 +24,7 @@ runtimeLivedata = "1.9.4"
 protoliteWellKnownTypes = "18.0.1"
 runtime = "1.9.4"
 foundationAndroid = "1.7.2"
+cameraCamera2Pipe = "1.6.0-alpha01"
 
 [libraries]
 androidx-activity-compose-v172 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
@@ -60,6 +61,7 @@ androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name =
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-compose-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
+androidx-camera-camera2-pipe = { group = "androidx.camera", name = "camera-camera2-pipe", version.ref = "cameraCamera2Pipe" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

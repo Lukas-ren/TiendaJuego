@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
             val compraRechazadaViewModel: CompraRechazadaViewModel = viewModel()
             NavHost(
                 navController = navController,
-                startDestination = "register"
+                startDestination = "backoffice"
             ) {
                 composable("register") {
                     RegisterScreen(
@@ -93,6 +93,9 @@ class MainActivity : ComponentActivity() {
                     BackOfficeScreen(
                         navController = navController,
                     )
+                }
+                composable(route = "agregarProducto") {
+                    AgregarProductoScreen(navController = navController)
                 }
 
                 composable("detalle/{videojuegoId}") { backStack ->

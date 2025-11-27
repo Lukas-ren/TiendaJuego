@@ -2,7 +2,7 @@ package com.example.login.model
 
 data class DetallePedido(
     val idPedido: String,
-    val totalCompra: Double,
+    val totalCompra: Int,
     val numeroArticulos: Int,
     val metodoPago: String
 )

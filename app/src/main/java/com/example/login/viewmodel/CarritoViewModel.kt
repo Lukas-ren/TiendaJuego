@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 class CarritoViewModel : ViewModel() {
     private val _carrito = MutableStateFlow<List<Carrito>>(emptyList())
     val carrito: StateFlow<List<Carrito>> = _carrito
-    val total: Double
+    val total: Int
         get() = _carrito.value.sumOf { it.subtotal }
     fun agregarProducto(item: Carrito) {
         _carrito.update { current ->
