@@ -60,8 +60,8 @@ fun CarritoScreen(
                                 metodoPago = "Tarjeta"
                             )
                             compraExitosaViewModel.setDetallesPedido(detalles)
-                            carritoViewModel.vaciarCarrito()
                             navController.navigate("compraExitosa")
+                            carritoViewModel.vaciarCarrito()
                         }
                     }) {
                         Text(text = "Finalizar compra")

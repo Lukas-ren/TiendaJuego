@@ -28,9 +28,7 @@ fun CatalogoScreen(navController: NavController, viewModel: CatalogoViewModel) {
     val loading by viewModel.loading.collectAsState()
     LaunchedEffect(Unit) {
         viewModel.cargarVideojuegos(
-            context,
-            usarRemoto = true,
-            baseUrl = "https://rawg.io/apidocs"  
+            context
         )
     }
 

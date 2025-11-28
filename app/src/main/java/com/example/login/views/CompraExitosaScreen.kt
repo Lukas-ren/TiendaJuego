@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.*
-
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -28,42 +27,46 @@ import com.example.login.model.DetallePedido
 import com.example.login.model.Videojuego
 import com.example.login.viewmodel.CatalogoViewModel
 import com.example.login.viewmodel.CompraExitosaViewModel
+import kotlinx.coroutines.delay
 
 @Composable
-fun CompraExitosaScreen(
-    navController: NavController,
-    viewModel: CompraExitosaViewModel = viewModel()
-) {
-    val detalles by viewModel.detallesPedido.observeAsState()
-    val codigoCanje by viewModel.codigoCanje.collectAsState()
+fun CompraExitosaScreen(navController: NavController, viewModel: CompraExitosaViewModel) {
+    val detalles by viewModel.detallesPedido.collectAsState()
+    val codigosCanje by viewModel.codigosCanje.collectAsState()
     val navegarInicio by viewModel.navegarInicio.observeAsState(false)
     val navegarTienda by viewModel.navegarTienda.observeAsState(false)
 
-    LaunchedEffect(navegarInicio, navegarTienda) {
-        when {
-            navegarInicio -> {
-                viewModel.navegacionCompletada()
-                navController.navigate("inicio") {
-                    popUpTo("carrito") { inclusive = true }
+    LaunchedEffect(Unit) {
+        val cantidad = detalles?.numeroArticulos ?: 0
+        if (cantidad > 0) {
+            viewModel.inicializarCodigos(cantidad = cantidad)
+        }
+    }
+        LaunchedEffect(key1=navegarInicio, key2=navegarTienda) {
+            when {
+                navegarInicio -> {
+                    viewModel.navegacionCompletada()
+                    navController.navigate("inicio") {
+                        popUpTo("carrito") { inclusive = true }
+                    }
                 }
-            }
-            navegarTienda -> {
-                viewModel.navegacionCompletada()
-                navController.navigate("catalogo") {
-                    popUpTo("carrito") { inclusive = true }
+
+                navegarTienda -> {
+                    viewModel.navegacionCompletada()
+                    navController.navigate("catalogo") {
+                        popUpTo("carrito") { inclusive = true }
+                    }
                 }
             }
         }
-    }
 
     // UI
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        contentAlignment = Alignment.Center
-    ) {
+    Scaffold { padding ->
+        24
         Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -77,16 +80,30 @@ fun CompraExitosaScreen(
             Text("¡Compra realizada con éxito!", fontSize = 22.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Tu código de canje:",
+                text = "Tus códigos de canje (uno por juego):",
                 style = MaterialTheme.typography.titleMedium
             )
-            Card{
-                Text(
-                    text = codigoCanje,
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(16.dp)
-                )
+
+            Spacer(modifier = Modifier.height(16.dp))
+            codigosCanje.forEachIndexed { index, code ->
+                Card(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.LightGray.copy(alpha = 0.5f))
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text(
+                            text = "Código para Juego #${index + 1}:",
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                        Text(
+                            text = code,
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
+                }
             }
+            Spacer(modifier = Modifier.weight(1f))
+
 
             detalles?.let {
                 Text("Número de pedido: ${it.idPedido}")
@@ -95,10 +112,12 @@ fun CompraExitosaScreen(
                 Text("Total: $${String.format("%.2f", it.totalCompra)}")
             }
 
+
             Spacer(modifier = Modifier.height(24.dp))
 
             Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
             ) {
                 Button(onClick = { viewModel.navegarAInicio() }) {
                     Text("Salir de la aplicación")
