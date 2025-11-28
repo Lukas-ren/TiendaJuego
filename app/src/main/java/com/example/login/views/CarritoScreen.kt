@@ -56,7 +56,7 @@ fun CarritoScreen(
                             val detalles = DetallePedido(
                                 idPedido = "PED-${System.currentTimeMillis()}",
                                 totalCompra = total,
-                                numeroArticulos = carritoActual.size,
+                                numeroArticulos = carritoActual.sumOf { it.cantidad },
                                 metodoPago = "Tarjeta"
                             )
                             compraExitosaViewModel.setDetallesPedido(detalles)

@@ -74,7 +74,8 @@ class MainActivity : ComponentActivity() {
                 composable("carrito") {
                     CarritoScreen(
                         navController = navController,
-                        carritoViewModel = carritoViewModel
+                        carritoViewModel = carritoViewModel,
+                        compraExitosaViewModel = compraExitosaViewModel
                     )
                 }
                 composable(route = "compraExitosa") {
