@@ -19,10 +19,32 @@ class CatalogoViewModel (
     private val _loading = MutableStateFlow(false)
     val loading: StateFlow<Boolean> = _loading
 
-    fun cargarVideojuegos(context: Context) {
+    fun cargarVideojuegos(
+        context: Context,
+        usarRemoto: Boolean = false,
+        baseUrl: String? = null,
+        pageSize: Int = 20
+    ) {
         viewModelScope.launch {
             _loading.value = true
-            val list = repo.obtenerVideojuego(context)
+            val list = if (usarRemoto && !baseUrl.isNullOrBlank()) {
+                try {
+                    val api = com.example.login.network.RetrofitClient.create(baseUrl)
+                    val remoteRepo = com.example.login.repository.RemoteVideojuegoRepository(api)
+                    val apiKey = com.example.login.BuildConfig.RAWG_API_KEY
+                    if (apiKey.isNullOrBlank()) {
+                        // No hay clave configurada; fallback a local
+                        repo.obtenerVideojuego(context)
+                    } else {
+                        remoteRepo.obtenerVideojuegosRawg(apiKey, pageSize)
+                    }
+                } catch (e: Exception) {
+                    // Fallback a datos locales si falla la petición remota
+                    repo.obtenerVideojuego(context)
+                }
+            } else {
+                repo.obtenerVideojuego(context)
+            }
             _videojuegos.value = list
             _loading.value = false
         }
