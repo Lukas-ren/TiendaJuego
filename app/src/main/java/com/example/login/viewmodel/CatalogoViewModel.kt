@@ -23,6 +23,7 @@ class CatalogoViewModel (
         context: Context,
         usarRemoto: Boolean = false,
         baseUrl: String? = null,
+        endpoint: String='games',
         pageSize: Int = 20
     ) {
         viewModelScope.launch {
