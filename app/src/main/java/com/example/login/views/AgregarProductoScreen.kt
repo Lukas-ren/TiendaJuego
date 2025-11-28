@@ -22,7 +22,7 @@ fun AgregarProductoScreen(
     navController: NavController,
     viewModel: AgregarProductoViewModel = viewModel()
 ) {
-    // 1. Recoger el estado del ViewModel
+
     val state by viewModel.state.collectAsState()
 
     Scaffold(
