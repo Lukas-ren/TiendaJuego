@@ -1,34 +1,28 @@
 package com.example.login
 
-import MiTopBar
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
+
 import com.example.login.viewmodel.AuthViewModel
-import com.example.login.views.*
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.*
-import androidx.activity.compose.setContent
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.navigation.NavHost
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.login.views.CatalogoScreen
-import com.example.login.views.DetalleVideojuegoScreen
 import com.example.login.viewmodel.CatalogoViewModel
-import com.example.login.viewmodel.CarritoViewModel
 import com.example.login.viewmodel.CompraExitosaViewModel
 import com.example.login.viewmodel.CompraRechazadaViewModel
-import com.example.login.views.CarritoScreen
+import com.example.login.viewmodel.CarritoViewModel
+
+import com.example.login.views.CatalogoScreen
+import com.example.login.views.DetalleVideojuegoScreen
+import com.example.login.views.CarroScreen
+import com.example.login.views.CompraExitosaScreen
+import com.example.login.views.CompraRechazadaScreen
+import com.example.login.views.MiTopBar
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
