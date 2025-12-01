@@ -60,7 +60,7 @@ class AgregarProductoViewModel(
         val stock = currentState.stock.toIntOrNull()
 
         if (precio == null || stock == null ) {
-            _state.value = currentState.copy(errorMessage = "Por favor, verifica los campos numéricos (Precio, Stock, Código).")
+            _state.value = currentState.copy(errorMessage = "Por favor, verifica los campos numéricos (Precio, Stock).")
             return
         }
 
