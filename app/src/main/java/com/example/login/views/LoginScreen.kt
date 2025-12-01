@@ -31,7 +31,7 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel) {
                 if (email == "admin@login.com" && password == "admin") {
                     navController.navigate(route = "backoffice")
                 } else {
-                    navController.navigate(route = "home/$email")
+                    navController.navigate(route = "catalogo")
                 }
             }
         }) {

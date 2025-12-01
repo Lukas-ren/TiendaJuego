@@ -15,13 +15,16 @@ import com.example.login.viewmodel.CatalogoViewModel
 import com.example.login.viewmodel.CompraExitosaViewModel
 import com.example.login.viewmodel.CompraRechazadaViewModel
 import com.example.login.viewmodel.CarritoViewModel
+import com.example.login.views.AgregarProductoScreen
+import com.example.login.views.BackOfficeScreen
 
 import com.example.login.views.CatalogoScreen
 import com.example.login.views.DetalleVideojuegoScreen
-import com.example.login.views.CarroScreen
+import com.example.login.views.CarritoScreen
 import com.example.login.views.CompraExitosaScreen
 import com.example.login.views.CompraRechazadaScreen
-import com.example.login.views.MiTopBar
+import com.example.login.views.LoginScreen
+import com.example.login.views.RegisterScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -49,13 +52,6 @@ class MainActivity : ComponentActivity() {
                         LoginScreen(
                             navController = navController,
                             viewModel = authViewModel
-                        )
-                    }
-                    composable("home/{email}") { backStackEntry ->
-                        val email = backStackEntry.arguments?.getString("email")
-                        HomeScreen(
-                            navController = navController,
-                            email = email
                         )
                     }
 
