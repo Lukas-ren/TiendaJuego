@@ -69,7 +69,6 @@ fun CompraExitosaScreen(navController: NavController, viewModel: CompraExitosaVi
         }
     }
 
-    // UI (sin cambios)
     Scaffold { padding ->
         Column(
             modifier = Modifier.fillMaxSize().padding(padding),

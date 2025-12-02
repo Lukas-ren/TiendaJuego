@@ -1,17 +1,28 @@
 package com.example.login.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.login.model.Carrito
 import com.example.login.model.Videojuego
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 
 class CarritoViewModel : ViewModel() {
     private val _carrito = MutableStateFlow<List<Carrito>>(emptyList())
     val carrito: StateFlow<List<Carrito>> = _carrito
-    val total: Int
-        get() = _carrito.value.sumOf { it.subtotal }
+    val total: StateFlow<Int> = carrito.map { items ->
+        items.sumOf { item ->
+            item.precio * item.cantidad
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = 0
+    )
     fun agregarProducto(item: Carrito) {
         _carrito.update { current ->
             val existente = current.find { it.id == item.id }

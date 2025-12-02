@@ -51,7 +51,7 @@ fun BackOfficeScreen(
                         Icon(
                             imageVector = Icons.Filled.Add,
                             contentDescription = "Añadir Producto",
-                            tint = Color.Black
+                            tint = Color.White
                         )
                     }
                     IconButton(onClick = { navController.navigate(route = "register") }) {
@@ -59,7 +59,7 @@ fun BackOfficeScreen(
                             imageVector = Icons.Filled.Home,
                             contentDescription = "Volver al Catálogo",
 
-                            tint = Color.Black
+                            tint = Color.White
                         )
                     }
                 }

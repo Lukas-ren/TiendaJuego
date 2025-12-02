@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 
 import androidx.compose.runtime.*
@@ -16,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.login.model.Videojuego
@@ -35,9 +40,33 @@ fun CatalogoScreen(navController: NavController, viewModel: CatalogoViewModel) {
 
     Scaffold(topBar = {
         CenterAlignedTopAppBar(
-            title = { Text("Catálogo") }
+            title = { Text("Catálogo") },
+            navigationIcon = {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                        contentDescription = "Regresar al login"
+                    )
+                }
+            },actions = {
+                IconButton(onClick = {
+                    // Acción para navegar a la pantalla del carrito
+                    navController.navigate("carrito")
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.ShoppingCart,
+
+                        contentDescription = "Ver carrito de compra"
+                    )
+                }
+            }
+
+
         )
     }
+
     ) { padding ->
         Box(modifier = Modifier.padding(padding)) {
             if (loading) {

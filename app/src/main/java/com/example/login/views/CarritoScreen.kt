@@ -2,6 +2,8 @@ package com.example.login.views
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -25,23 +27,25 @@ fun CarritoScreen(
     compraExitosaViewModel: CompraExitosaViewModel = viewModel()
 ) {
     val carrito = carritoViewModel.carrito.collectAsState()
+    val totalCompra by carritoViewModel.total.collectAsState()
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text("🛒 Carrito de Compras") },
-                actions = {
-                    TextButton(onClick = { carritoViewModel.vaciarCarrito() }) {
-                        Text("Vaciar", color = MaterialTheme.colorScheme.onPrimary)
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.popBackStack()
+                    }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Regresar a la lista"
+                        )
                     }
                 }
             )
         },
         bottomBar = {
-            BottomAppBar(
-                containerColor = Color(0xFF121212),
-                contentColor = Color.White
-            ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -49,14 +53,14 @@ fun CarritoScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text("Total: $${carritoViewModel.total}")
+                    Text("Total: $${totalCompra}")
                     Button(onClick = {
                         val carritoActual = carritoViewModel.carrito.value
 
                         if (carritoActual.isNullOrEmpty()) {
                             navController.navigate("compraRechazada")
                         } else {
-                            val total = carritoViewModel.total
+                            val total = carritoViewModel.total.value
                             val detalles = DetallePedido(
                                 idPedido = "PED-${System.currentTimeMillis()}",
                                 totalCompra = total,
@@ -71,7 +75,7 @@ fun CarritoScreen(
                         Text(text = "Finalizar compra")
                     }
                 }
-            }
+
         }
     ) { padding ->
         if (carrito.value.isEmpty()) {
@@ -123,7 +127,7 @@ fun CarritoScreen(
                             }
 
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                IconButton(onClick = { carritoViewModel.disminuirCantidad(videojuego.id) }) {
+                                Button(onClick = { carritoViewModel.disminuirCantidad(videojuego.id) }) {
                                     Text("-")
                                 }
                                 Text("${videojuego.cantidad}", modifier = Modifier.padding(horizontal = 4.dp))

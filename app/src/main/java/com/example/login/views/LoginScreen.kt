@@ -42,5 +42,8 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel) {
         }
 
         Text(viewModel.mensaje.value, modifier = Modifier.padding(top = 10.dp), color = Color.White)
+        TextButton(onClick = { navController.navigate("register") }) {
+            Text("¿No tienes cuenta?")
+        }
     }
 }

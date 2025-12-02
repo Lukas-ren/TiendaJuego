@@ -1,5 +1,6 @@
 package com.example.login.views
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -37,6 +39,7 @@ fun CompraRechazadaScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(24.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -63,7 +66,8 @@ fun CompraRechazadaScreen(
 
             Text(
                 text = motivo.ifEmpty { "Hubo un problema con el pago o los datos ingresados." },
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                        color = Color.White
             )
 
             Spacer(modifier = Modifier.height(24.dp))

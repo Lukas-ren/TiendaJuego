@@ -2,6 +2,8 @@ package com.example.login.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.unit.dp
@@ -24,8 +26,22 @@ fun DetalleVideojuegoScreen(videojuegoId: Int,
 
 
     Scaffold(topBar = {
-        CenterAlignedTopAppBar(title = { Text(videojuego?.nombre ?: "Detalle") })
-    }) { padding ->
+        CenterAlignedTopAppBar(
+            title = { Text(videojuego?.nombre ?: "Detalle") },
+            navigationIcon = {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Regresar a la lista"
+                    )
+                }
+            }
+        )
+    }
+
+    ){ padding ->
         videojuego?.let { v ->
             Column(modifier = Modifier
                 .padding(padding)
