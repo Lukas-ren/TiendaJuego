@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.*
+import com.example.login.ui.theme.LoginTheme
 
 import com.example.login.viewmodel.AuthViewModel
 import com.example.login.viewmodel.CatalogoViewModel
@@ -31,6 +32,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            LoginTheme {
                 val navController = rememberNavController()
                 val authViewModel: AuthViewModel = viewModel()
                 val catalogoViewModel: CatalogoViewModel = viewModel()
@@ -104,3 +106,4 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}

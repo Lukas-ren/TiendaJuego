@@ -1,9 +1,11 @@
 package com.example.login.views
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.login.viewmodel.AuthViewModel
@@ -16,10 +18,11 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(20.dp),
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Inicio de Sesión", style = MaterialTheme.typography.titleLarge)
+        Text("Inicio de Sesión", style = MaterialTheme.typography.titleLarge, color = Color.White)
 
         OutlinedTextField(value = email, onValueChange = { email = it }, label = { Text("Email") })
         OutlinedTextField(value = password, onValueChange = { password = it }, label = { Text("Contraseña") })
@@ -38,6 +41,6 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel) {
             Text("Entrar")
         }
 
-        Text(viewModel.mensaje.value, modifier = Modifier.padding(top = 10.dp))
+        Text(viewModel.mensaje.value, modifier = Modifier.padding(top = 10.dp), color = Color.White)
     }
 }

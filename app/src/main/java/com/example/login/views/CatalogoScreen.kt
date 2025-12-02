@@ -13,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
@@ -61,10 +62,14 @@ fun CatalogoScreen(navController: NavController, viewModel: CatalogoViewModel) {
 fun VideojuegoCard(videojuego: Videojuego, onClick: () -> Unit) {
     Card(modifier = Modifier
         .fillMaxWidth()
+
         .clickable { onClick() }
         .padding(4.dp),
         shape = RoundedCornerShape(8.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFF3A3A3A)
+        )
     ) {
         Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
             val painter = rememberAsyncImagePainter(videojuego.imagen)
